@@ -14,7 +14,8 @@ def get_sentiment_pipeline() -> Pipeline:
     if _pipeline is None:
         with _pipeline_lock:
             if _pipeline is None:  # Double-check locking
-                _pipeline = pipeline("sentiment-analysis", model="distilbert-base-uncased-finetuned-sst-2-english")
+                #_pipeline = pipeline("sentiment-analysis", model="distilbert-base-uncased-finetuned-sst-2-english")
+                _pipeline = pipeline("sentiment-analysis", model="cardiffnlp/twitter-roberta-base-sentiment-latest")
     return _pipeline
 
 class TextInput(BaseModel):

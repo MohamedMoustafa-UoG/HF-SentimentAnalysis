@@ -4,76 +4,59 @@ title: Sentiment Analysis API
 emoji: 🧠
 colorFrom: indigo
 colorTo: blue
-sdk: docker
-app_file: app.py
+sdk: gradio
+app_file: gradio_app.py
 pinned: false
 license: cc0-1.0
-short_description: AI-based sentiment analysis using HuggingFace Transformers
+short_description: AI sentiment analysis using Gradio and social-tuned model
 ---
 
 # Sentiment Analysis API 🧠
 
-A simple and efficient AI-powered sentiment analysis tool that predicts the sentiment (positive/negative) of a given text using a pre-trained Hugging Face Transformers model, delivered via a REST API with FastAPI and Docker.
+A simple and efficient AI-powered sentiment analysis tool that predicts the sentiment (positive, negative, or neutral) of a given text using the state-of-the-art `cardiffnlp/twitter-roberta-base-sentiment-latest` Hugging Face Transformers model. Delivered via an interactive web interface with Gradio and Docker.
 
 ## 🚀 Features
 
-- **Accurate Sentiment Classification**: Uses `distilbert-base-uncased-finetuned-sst-2-english` for robust results
-- **RESTful API**: Easily integrate sentiment analysis into any app or workflow
-- **Fast & Lightweight**: Optimized Docker deployment for fast response
-- **Developer Friendly**: OpenAPI docs available at `/docs`
+- **Modern Sentiment Model**: Uses `cardiffnlp/twitter-roberta-base-sentiment-latest` for robust results on social, real-world, and informal text
+- **Interactive Web UI**: Built with Gradio—no code or REST calls needed, just use your browser
+- **Fast & Lightweight**: Optimized Docker deployment for instant response
+- **Flexible Input**: Works with social media, chat, feedback, and general-purpose text
 
 ## 🛠️ How It Works
 
-1. **Input**: Send a POST request with your text to `/predict`
-2. **Process**: The model analyzes the sentiment as positive or negative
-3. **Output**: JSON response with label and confidence score
+1. **Input**: Type or paste your text into the web interface
+2. **Process**: The model analyzes and predicts the sentiment (positive, neutral, negative)
+3. **Output**: The UI displays the result and confidence score
 
-## 📦 API Usage
+## 📦 Web App Usage
 
-**POST** `/predict`
-
-**Request:**
-
-```json
-{
-  "text": "I love Hugging Face!"
-}
-```
-
-**Response:**
-
-```json
-{
-  "result": [
-    { "label": "POSITIVE", "score": 0.9998 }
-  ]
-}
-```
-
-Try it interactively at [`/docs`](https://huggingface.co/spaces/MohamedMoustafa/hf-sentimentanalysis/docs).
+- Visit the deployed Space (see Hugging Face link)
+- Enter your text and press submit to see the sentiment
 
 ## 📊 Model Information
 
-- **Model:** distilbert-base-uncased-finetuned-sst-2-english
-- **Task:** Sentiment classification (positive/negative)
+- **Model:** cardiffnlp/twitter-roberta-base-sentiment-latest
+- **Task:** Sentiment classification (positive, neutral, negative)
 - **Framework:** Hugging Face Transformers + PyTorch
+- **Tuned for:** Real-world, social, and varied text input (not just reviews)
 
 ## 💡 Usage Tips
 
-- Works best with clear, single-sentence or short-paragraph input
-- Use for reviews, social media, quick feedback tools, etc.
+- Handles tweets, chat, reviews, informal, and general English
+- Works well for short sentences and social language
+- Not designed for deep clinical or medical language—see project notes
 
 ## 🔧 Technical Stack
 
-- **Model:** Hugging Face Transformers (DistilBERT)
-- **API:** FastAPI
+- **Model:** Hugging Face Transformers (CardiffNLP Roberta)
+- **Interface:** Gradio
 - **Container:** Docker
 - **Deployment:** Hugging Face Spaces
 
 ## 📈 Performance
 
-- **Speed:** Fast inference for most short texts (<1 second per request)
-- **Quality:** Good accuracy for modern English
+- **Speed:** Fast inference (<1 second per request)
+- **Quality:** Improved accuracy for diverse, real-world language
 
 ## 💪 Local Development
 
@@ -86,10 +69,7 @@ Try it interactively at [`/docs`](https://huggingface.co/spaces/MohamedMoustafa/
    ```bash
    docker run -p 7860:7860 hf-sentimentanalysis
    ```
-4. Test locally:
-   ```bash
-   curl -X POST -H "Content-Type: application/json" -d '{"text":"I love Hugging Face!"}' http://localhost:7860/predict
-   ```
+4. Open [http://localhost:7860/](http://localhost:7860/) in your browser to use the Gradio UI
 
 ## 🚦 CI/CD
 
@@ -98,7 +78,8 @@ Try it interactively at [`/docs`](https://huggingface.co/spaces/MohamedMoustafa/
 ## 📁 Project Structure
 
 ```
-├── app.py              # FastAPI application
+├── app.py              # FastAPI application (for optional REST API)
+├── gradio_app.py       # Gradio web app (main entry point)
 ├── requirements.txt    # Python dependencies
 ├── Dockerfile          # Docker build instructions
 ├── app.yaml            # Hugging Face Docker config
@@ -125,5 +106,4 @@ See [LICENSE](https://creativecommons.org/publicdomain/zero/1.0/) for details.
 
 ---
 
-*Built with ❤️ using Hugging Face Transformers, FastAPI, and Docker*
-
+*Built with ❤️ using Hugging Face Transformers, Gradio, and Docker*

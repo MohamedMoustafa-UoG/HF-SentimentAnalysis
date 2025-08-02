@@ -23,11 +23,11 @@ jobs:
       - name: Build Docker image
         run: docker build -t hf-sentimentanalysis .
 
-      - name: Run container and test endpoint
+      - name: Run container and test UI endpoint
         run: |
           docker run -d --name test-hf-app -p 7860:7860 hf-sentimentanalysis
           sleep 10
-          curl --fail -X POST -H "Content-Type: application/json" -d '{"text": "I love Hugging Face!"}' http://localhost:7860/predict || (docker logs test-hf-app && exit 1)
+          curl --fail http://localhost:7860/ || (docker logs test-hf-app && exit 1)
 
       - name: Add Hugging Face remote
         env:
