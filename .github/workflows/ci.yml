@@ -26,3 +26,14 @@ jobs:
           docker run -d --name test-hf-app -p 7860:7860 hf-sentimentanalysis
           sleep 10
           curl --fail -X POST -H "Content-Type: application/json" -d '{"text": "I love Hugging Face!"}' http://localhost:7860/predict || (docker logs test-hf-app && exit 1)
+
+      - name: Add Hugging Face remote
+        env:
+          HF: ${{ secrets.HF }}
+        run: |
+          git remote add space https://oauth2:$HF@huggingface.co/spaces/MohamedMoustafa/hf-sentimentanalysis || echo "Remote exists"
+
+      - name: Push to Hugging Face Space
+        env:
+          HF: ${{ secrets.HF }}
+        run: git push --force space main
