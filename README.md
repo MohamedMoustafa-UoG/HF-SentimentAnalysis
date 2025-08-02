@@ -30,7 +30,7 @@ A simple and efficient AI-powered sentiment analysis tool that predicts the sent
 
 ## 📦 Web App Usage
 
-- Visit the deployed Space (see Hugging Face link)
+- [Visit the deployed Space](https://huggingface.co/spaces/MohamedMoustafa/hf-sentimentanalysis)
 - Enter your text and press submit to see the sentiment
 
 ## 📊 Model Information
