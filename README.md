@@ -8,7 +8,7 @@ sdk: docker
 app_file: app.py
 pinned: false
 license: cc0-1.0
-short_description: AI-powered sentiment analysis using Hugging Face Transformers
+short_description: AI-based sentiment analysis using HuggingFace Transformers
 ---
 
 # Sentiment Analysis API 🧠
