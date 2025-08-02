@@ -1,6 +1,15 @@
 ---
 
-## title: Sentiment Analysis API emoji: 🧠 colorFrom: indigo colorTo: blue sdk: docker app\_file: app.py pinned: false license: cc0-1.0 short\_description: AI-powered sentiment analysis using Hugging Face Transformers
+title: Sentiment Analysis API
+emoji: 🧠
+colorFrom: indigo
+colorTo: blue
+sdk: docker
+app_file: app.py
+pinned: false
+license: cc0-1.0
+short_description: AI-powered sentiment analysis using Hugging Face Transformers
+---
 
 # Sentiment Analysis API 🧠
 
